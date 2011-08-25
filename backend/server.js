@@ -6,15 +6,15 @@ var gameObject = {};
 
 app.configure(function(){
     app.use(express.methodOverride());
-    app.use(express.bodyDecoder());
-    app.use(express.staticProvider(__dirname + '/../frontend/'));
+    app.use(express.bodyParser());
+    app.use(express.static(__dirname + '/../frontend/'));
 });
 
 app.get('/', function (req, res) {
     res.redirect('/index.html');
 });
 
-app.listen(process.env['app_port'] || 3000);
+app.listen(process.env['app_port'] || 8000);
 
 
 var socket = io.listen(app); 
